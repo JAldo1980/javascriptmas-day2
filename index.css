@@ -74,21 +74,6 @@ select {
 }
 /* end of css reset */
 
-.wrapper {
-  background-color: var(--body-bg);
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  margin: 0 auto;
-  max-width: 500px;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
 :root {
   --font-family: "Karla", sans-serif;
   --body-bg: #1e1f25;
@@ -102,18 +87,93 @@ select {
   --grad-color5: #6a0d83;
 }
 
-.gradient-outer-box {
-  width: 200px;
-  height: 60px; /* Adjust the height as needed */
-  background: linear-gradient(
-    115deg,
-    var(--grad-color1) 0%,
-    var(--grad-color2) 25%,
-    var(--grad-color3) 50%,
-    var(--grad-color4) 75%,
-    var(--grad-color5) 100%
-  );
+body {
+  background-image: url(/snow-background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.gradient-inner-box {
+.wrapper {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.gradient-outer-box {
+  font-size: 1rem;
+  padding: 1em 1.6em;
+  background: var(--btn-bg);
+  background: linear-gradient(
+    to right,
+    var(--grad-color1),
+    var(--grad-color2),
+    var(--grad-color3),
+    var(--grad-color4),
+    var(--grad-color5)
+  );
+  position: relative;
+  border: none;
+  outline: none;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.gradient-outer-box:hover {
+  background: linear-gradient(
+    to left,
+    var(--grad-color1),
+    var(--grad-color2),
+    var(--grad-color3),
+    var(--grad-color4),
+    var(--grad-color5)
+  );
+  cursor: pointer;
+}
+
+.gradient-inner-box::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  background-color: var(--body-bg);
+  z-index: -1;
+  transition: 225ms;
+}
+
+.gradient-inner-box::after {
+  content: attr(data);
+  font-size: 1rem;
+  transition: 225ms;
+}
+
+.gradient-inner-box:hover {
+  cursor: pointer;
+}
+
+button {
+  background-color: var(--body-bg);
+  border: none;
+  color: var(--btn-color);
+}
+
+button:hover {
+  color: var(--btn-color-hover);
+}
+
+.link-el {
+  margin-top: 3em;
 }
